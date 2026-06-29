@@ -128,4 +128,35 @@ describe("Interface", function () {
 
     console.log(domain);
   });
+
+  // Type Assertions
+  it("should support type assertions", function () {
+    // digunakan ketika ingin copy tipe data dari interface yang sudah punya tipe data, ke-
+    // tipe data yang sifatnya any/tidak punya tipe data
+    interface Person {
+      name: string;
+      sayHello(name: string): string;
+    }
+
+    // object tidak punya type annotation (any)
+    // sebetulnya, Type Assertions tetap harus menggunakan property yang sama dengan referensi interface-nya
+    const person: any = {
+      name: "ripunn",
+      age: 18,
+    };
+
+    // convert:
+    // buat variable baru 'personPerson' dengan tipe data 'Person'
+    // lalu, panggil object 'person' dan convert tipe data menjadi 'Person'
+    const personPerson: Person = person as Person;
+
+    // tidak bisa akses 'personPerson.age', karena di referensi interface 'Person' tidak ada property 'age'
+    // console.log(personPerson.age);
+
+    // atau, ketika kita panggil 'sayHello()'
+    // personPerson.sayHello("ripunn");
+    // 'sayHello()' tidak bisa dipanggil juga, karena 'sayHello()' tidak pernah dipanggil di object 'person: any'
+
+    console.log(personPerson);
+  });
 });
