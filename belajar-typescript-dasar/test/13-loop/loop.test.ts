@@ -38,4 +38,14 @@ describe("Loop", function () {
       counter++;
     }
   });
+
+  // Do While Loop
+  it("should support do while loop", function () {
+    let counter = 0;
+
+    do {
+      console.log("Looping ke-", counter);
+      counter++;
+    } while (counter < 10);
+  });
 });
