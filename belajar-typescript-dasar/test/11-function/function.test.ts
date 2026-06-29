@@ -53,4 +53,25 @@ describe("Function", function () {
 
     expect(sum(1, 2, 3, 4, 5)).toBe(15);
   });
+
+  // Function Overloading
+  it("should support function overloading", function () {
+    // Overload Signature
+    // mendefinisikan tipe data dan return value
+    function callMe(value: string): string;
+    function callMe(value: number): number;
+
+    // Implementation Signature
+    // implementasi
+    function callMe(value: any) {
+      if (typeof value === "string") {
+        return value.toUpperCase();
+      } else if (typeof value === "number") {
+        return value * 2;
+      }
+    }
+
+    expect(callMe("ripunch")).toBe("RIPUNCH");
+    expect(callMe(50)).toBe(100);
+  });
 });
