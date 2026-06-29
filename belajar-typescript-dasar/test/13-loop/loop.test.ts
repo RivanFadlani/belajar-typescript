@@ -48,4 +48,25 @@ describe("Loop", function () {
       counter++;
     } while (counter < 10);
   });
+
+  // Break and Countinue
+  it("should support break and continue", function () {
+    let counter = 0;
+
+    do {
+      counter++;
+
+      // counter === 10, berhenti
+      if (counter === 10) {
+        break;
+      }
+
+      // kalau counter hasil sisa baginya === 0, lanjut ke loop selanjutnya
+      if (counter % 2 === 0) {
+        continue;
+      }
+
+      console.log("Yang Ganjil Ajah: ", counter);
+    } while (true); // perulangan akan dilakukan sampai (if dengan blok break tertrigger)
+  });
 });
