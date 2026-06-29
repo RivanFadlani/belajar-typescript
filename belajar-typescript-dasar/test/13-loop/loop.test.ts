@@ -28,4 +28,14 @@ describe("Loop", function () {
       console.log("for in: ", fruit);
     }
   });
+
+  // While Loop
+  it("should support while loop", function () {
+    let counter: number = 0;
+
+    while (counter < 10) {
+      console.log("Perulangan ke-", counter);
+      counter++;
+    }
+  });
 });
