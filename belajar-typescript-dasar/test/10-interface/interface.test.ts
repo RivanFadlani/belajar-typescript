@@ -99,4 +99,33 @@ describe("Interface", function () {
 
     console.log(person.sayHello("kirijo"));
   });
+
+  // Intersection Types
+  it("should support intersection types", function () {
+    interface HasName {
+      name: string;
+    }
+
+    interface HasId {
+      id: number;
+    }
+
+    // bisa saja menggunakan extends seperti ini:
+
+    // ``` typescript
+    // interface Domain extends HasId, HasName {
+    // * tapi kalau kasusnya kita tidak perlu menambahkan attr,
+    // * maka, cara ini kurang tepat
+    // }
+    // ```
+
+    type Domain = HasId & HasName;
+
+    const domain: Domain = {
+      id: 1,
+      name: "ripunn",
+    };
+
+    console.log(domain);
+  });
 });
