@@ -21,4 +21,22 @@ describe("If Statement", function () {
 
     console.log(say);
   });
+
+  // Switch Case
+  it("should support switch case", function () {
+    function sayHello(name: string): string {
+      switch (name) {
+        case "ripunn":
+          return "Hello alter ego";
+        case "rivan":
+          return "Hello orang asli";
+        default:
+          return `Hahh?! ${name}?`;
+      }
+    }
+
+    console.log(sayHello("ripunn"));
+    console.log(sayHello("rivan"));
+    console.log(sayHello("lolok"));
+  });
 });
