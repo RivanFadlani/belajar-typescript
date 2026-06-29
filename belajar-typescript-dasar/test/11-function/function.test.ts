@@ -74,4 +74,34 @@ describe("Function", function () {
     expect(callMe("ripunch")).toBe("RIPUNCH");
     expect(callMe(50)).toBe(100);
   });
+
+  // Function Sebagai Parameter (Callback)
+  it("should support function as parameter", function () {
+    // deklarasi parameter: string dan function(: string) => string
+    function sayHello(name: string, filter: (name: string) => string) {
+      return `Hello ${filter(name)}`;
+    }
+
+    // membuat function yang akan dipanggil di parameter function 'sayHello'
+    function toUpperCase(name: string) {
+      return name.toUpperCase();
+    }
+
+    console.log(sayHello("fern", toUpperCase));
+
+    // memberi argument kepada function sayHello yang parameternya "ripunn" dan function
+    expect(sayHello("ripunn", toUpperCase)).toBe("Hello RIPUNN");
+
+    // anonymous function
+    expect(
+      sayHello("hengker", function (name: string): string {
+        return name.toUpperCase();
+      }),
+    ).toBe("Hello HENGKER");
+
+    // arrow function
+    expect(
+      sayHello("rivan ganteng", (name: string): string => name.toUpperCase()),
+    ).toBe("Hello RIVAN GANTENG");
+  });
 });
