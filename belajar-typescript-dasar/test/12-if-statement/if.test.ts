@@ -13,4 +13,12 @@ describe("If Statement", function () {
       console.log("Git Gud");
     }
   });
+
+  // Ternary Operator
+  it("should support ternary operator", function () {
+    const score = 88;
+    const say = score >= 80 ? "Congratulation" : "Git Gud";
+
+    console.log(say);
+  });
 });
