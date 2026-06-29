@@ -34,4 +34,29 @@ describe("Interface", function () {
 
     expect(add(2, 2)).toBe(4);
   });
+
+  // Indexable Interface
+  it("should support indexable interface in typescript", function () {
+    interface StringArray {
+      //   index   --   value
+      [index: number]: string;
+    }
+
+    const fruits: StringArray = ["watermelon", "banana", "starfruit"];
+    console.log(fruits);
+  });
+
+  it("should support indexable interface for non number index", function () {
+    interface StringDictionary {
+      [key: string]: string;
+    }
+
+    const dictionary: StringDictionary = {
+      name: "ripunn",
+      address: "indonesia",
+    };
+
+    expect(dictionary["name"]).toBe("ripunn");
+    expect(dictionary["address"]).toBe("indonesia");
+  });
 });
