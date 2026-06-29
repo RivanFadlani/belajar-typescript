@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import type { Seller } from "../../src/10-interface/interface";
+import type { Employee, Manager } from "../../src/10-interface/Employee";
 
 describe("Interface", function () {
   // Interface
@@ -58,5 +59,27 @@ describe("Interface", function () {
 
     expect(dictionary["name"]).toBe("ripunn");
     expect(dictionary["address"]).toBe("indonesia");
+  });
+
+  // Extending Interface
+  it("should support extending interface", function () {
+    // interface (Employee)
+    const employee: Employee = {
+      id: 1,
+      name: "ripunn",
+      division: "front end",
+    };
+
+    console.log(employee);
+
+    // extend interface (Manager) from 'Employee'
+    const manager: Manager = {
+      id: 2, // extend property
+      name: "rivan", // extend property
+      division: "back end", // extend property
+      numberOfEmployee: 7,
+    };
+
+    console.log(manager);
   });
 });
