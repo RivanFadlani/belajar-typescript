@@ -15,4 +15,42 @@ describe("Function", function () {
 
     printHello("Rivan");
   });
+
+  // Function Parameter
+  it("should support default parameter", function () {
+    //        ---         default parameter
+    function sayHello(name: string = "Neighbor") {
+      return `Hello ${name}`;
+    }
+
+    expect(sayHello()).toBe("Hello Neighbor");
+    expect(sayHello("Lolok")).toBe("Hello Lolok");
+  });
+
+  // Optional Parameter
+  it("should support optional parameter", function () {
+    function sayHello(firstName: string, lastName?: string): string {
+      if (lastName) {
+        return `Hello, ${firstName} ${lastName}`;
+      } else {
+        return `Hello, ${firstName}`;
+      }
+    }
+
+    expect(sayHello("Rivan")).toBe("Hello, Rivan");
+    expect(sayHello("Rivan", "Fadlani")).toBe("Hello, Rivan Fadlani");
+  });
+
+  // Rest Parameter
+  it("should support rest parameter", function () {
+    function sum(...values: number[]): number {
+      let total = 0;
+      for (const value of values) {
+        total += value;
+      }
+      return total;
+    }
+
+    expect(sum(1, 2, 3, 4, 5)).toBe(15);
+  });
 });
