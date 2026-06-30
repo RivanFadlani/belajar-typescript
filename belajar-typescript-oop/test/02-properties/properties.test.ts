@@ -12,6 +12,13 @@ describe("Properties", function () {
       this.id = id; // mengacu pada field di luar scope constructor
       this.name = name; // * linked ke field/property 'name'
     }
+
+    // Method
+    sayHello(name: string): void {
+      // ${name} mengambil dari parameter sayHello
+      // ${this.name} mengambil dari hasil argument instance object
+      console.log(`Hello, ${name}! My name is ${this.name}`);
+    }
   }
 
   it("should can have properties", function () {
@@ -23,5 +30,11 @@ describe("Properties", function () {
     console.log("name:", customer.name);
     console.log("age:", customer.age);
     console.log("default value:", customer.rank);
+  });
+
+  // Method
+  it("should can have method", function () {
+    const customer: Customer = new Customer(1, "rizcung");
+    customer.sayHello("rizka");
   });
 });
