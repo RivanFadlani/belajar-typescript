@@ -14,6 +14,8 @@ describe("Method Overriding", function () {
   class Manager extends Employee {
     // overriding method dari employee
     sayHello(name: string): void {
+      // super method. memanggil method yang sama dari parent (Employee)
+      super.sayHello(name);
       console.log(`Weh! mas ${name} timpa teks punya ${this.name} loh ya xD`);
     }
   }
