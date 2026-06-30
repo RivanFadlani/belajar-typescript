@@ -18,7 +18,19 @@ describe("Polymorphism", function () {
   // bisa menerima argument dalam bentuk instance object baru
   // bisa class Employee, ataupun class turunan dari class Employee
   function sayHello(employee: Employee): void {
-    console.log(`Hello ${employee.name}, dengan id ${employee.id}`);
+    // urutannya harus dari turunan yang paling bawah dulu
+    // 3. VicePresident -> 2. Manager -> 1. Employee
+    if (employee instanceof VicePresident) {
+      const vicePresident = employee as VicePresident;
+      console.log(
+        `Hello Vice President ${vicePresident.name} dengan id ${vicePresident.id}`,
+      );
+    } else if (employee instanceof Manager) {
+      const manager = employee as Manager;
+      console.log(`Hello Manager ${manager.name} dengan id ${manager.id}`);
+    } else {
+      console.log(`Hello Employee ${employee.name} dengan id ${employee.id}`);
+    }
   }
 
   it("should support polymorphism", function () {
@@ -33,6 +45,11 @@ describe("Polymorphism", function () {
     employee = new VicePresident("VP-9797", "Ripunn");
     console.log(employee);
     console.log("Bentuk VicePresident:", employee.name);
+
+    // experiment: pengecekan instanceof
+    expect(employee instanceof VicePresident).toBe(true);
+    expect(employee instanceof Manager).toBe(true);
+    expect(employee instanceof Employee).toBe(true);
   });
 
   // Method Polymorphism
