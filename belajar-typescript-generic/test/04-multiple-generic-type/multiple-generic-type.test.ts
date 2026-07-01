@@ -46,7 +46,9 @@ describe("Multiple Generic Type", () => {
     expect(entry.value).toBe("ripunn");
   });
 
-  class simpleGeneric<T> {
+  // Generic Parameter Default
+  // <T = string>
+  class simpleGeneric<T = string> {
     private value?: T;
 
     getValue(): T | undefined {
@@ -59,8 +61,9 @@ describe("Multiple Generic Type", () => {
   }
 
   it("should have problem non-constructor generic type", () => {
+    // * default <T> = string
     // jika tipe data tidak dideklarasikan pada instance object, maka tipe data akan sama saja seperti 'Any'
-    const simple = new simpleGeneric<string>();
+    const simple = new simpleGeneric();
     // di bawah ini akan diproses semua ke expect
     // karena ada method toUpperCase(). maka expect hanya menerima string saja
     // jadi kita perlu deklarasi tipe data pada generic untuk memfilter hanya yang tipe data string saja yang bisa diproses
